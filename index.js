@@ -8,13 +8,14 @@ require('dotenv').config();
 
 app.use(express.json());
 app.use(cors({ origin: "*" }));
+app.use("/api", taskRoutes);
+
 app.listen(port, "0.0.0.0", () => {
   console.log(`running on port ${port} (0.0.0.0)`);
 });
 
 app.get("/", (req, res) => res.send("Backendserver started"));
 
-app.use("/api", taskRoutes);
 
 mongoose.connect(process.env.MONGODB_URL)
 .then(() => console.log(" Connected to MongoDB Atlas"))
