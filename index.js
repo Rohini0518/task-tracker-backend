@@ -7,10 +7,12 @@ const port = process.env.PORT || 8000;
 require('dotenv').config();
 
 app.use(express.json());
-
 app.use(cors({ origin: "*" }));
-app.listen(port, "localhost", () => {
-  console.log(`running in ${port} port`);
+// app.listen(port, "localhost", () => {
+//   console.log(`running in ${port} port`);
+// });
+app.listen(port, "0.0.0.0", () => {
+  console.log(`running on port ${port} (0.0.0.0)`);
 });
 
 app.get("/", (req, res) => res.send("Backendserver started"));
